@@ -3,5 +3,5 @@ export interface Products{
     title: string,
     description: string,
     price: string,
-    inStock: boolean,
+    outOfStock: boolean,
 }
