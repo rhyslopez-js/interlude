@@ -1,0 +1,28 @@
+.wrap{
+    height: 100vh;
+}
+
+.banner{
+    width: 40%;
+}
+
+.btn-success{
+    width: 15%;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition: ease 0.3s;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-success {
+      width: 40%;
+    }
+
+    .banner{
+        width: 80%;
+    }
+  }
