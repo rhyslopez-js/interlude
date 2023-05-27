@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Products } from '../interfaces/products.interface';
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../interfaces/product.interface';
 
 @Component({
   selector: 'app-products',
@@ -8,33 +10,22 @@ import { Products } from '../interfaces/products.interface';
 })
 export class ProductsComponent {
 
-  products:Products[] = [
+  productsAPI:any[] = []
 
-    {
-      image: "/assets/product1.png",
-      title: "TeenX Hoodie",
-      description: "TeenX oversized black hoodie. Design embroided on heavy blend Gildan material.",
-      price: "$120",
-      outOfStock: false, 
-    },
-    
-    {
-      image: "/assets/product2.png",
-      title: "Distressed Cargo Pants",
-      description: "Vintage distressed oversized cargo pants. Straight fit with 10 pockets & no ankle garters.",
-      price: "$140",
-      outOfStock: false, 
-    },
-    
-    {
-      image: "/assets/product3.png",
-      title: "Hyperpop Hoodie",
-      description: "Hyperpop oversized grey hoodie. Design printed on heavy blend Gildan material.",
-      price: "$99",
-      outOfStock: true, 
-    },
+  constructor(private http:HttpClient){
+
+  }
+
+    ngOnInit(): void {
+      this.http.get<Product>("http://localhost:4600/products").subscribe(response =>{
+        console.log(response.productData)
+        this.productsAPI = response.productData
+      })
+    }
 
 
-  ]
 
+ alertTest(){
+  alert('You just clicked add to cart')
+ }
 }
